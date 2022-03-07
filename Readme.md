@@ -40,7 +40,9 @@ Created 2 routes
 Admin has facility to upload photos,
 User has facility to view uploaded photo
 
+Front end created with EJS
 
+use http://localhost:3000/ to start the application
 
 Question 2 commit id : 0fb4fbdb997fbbf0b56b4cde0766185a3fed4a71
 
