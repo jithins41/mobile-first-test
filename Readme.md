@@ -30,3 +30,17 @@ uses the same token to authenticate  GET : http://localhost:3000/home API
 
 Question 1 commit id : 78ea71080c163eacc4f81b6c77711a0585c5ac7d
 
+
+Question 2
+
+Created 2 routes
+1. Admin 
+2. User
+
+Admin has facility to upload photos,
+User has facility to view uploaded photo
+
+
+
+Question 2 commit id : 0fb4fbdb997fbbf0b56b4cde0766185a3fed4a71
+
