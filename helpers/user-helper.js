@@ -3,10 +3,8 @@ const User = require('../models/user-model');
 const bcrypt = require('bcryptjs');
 
 module.exports.findUserIdDuplication = function (userId) {
-    console.log(userId)
     return new Promise((resolve, reject) => {
-        User.findOne().then((response) => {
-
+        User.findOne({username:userId}).then((response) => {
             if (response) {
                 resolve(true);
             }
@@ -19,7 +17,6 @@ module.exports.findUserIdDuplication = function (userId) {
 
 
 module.exports.doSignup = async function (userData) {
-    console.log(userData)
     userData.password = await bcrypt.hash(userData.password, 10);
     return new Promise((resolve, reject) => {
         let user = new User(userData);
@@ -28,3 +25,20 @@ module.exports.doSignup = async function (userData) {
         })
     })
 }
+
+module.exports.doLogin = function (username, password) {
+    return new Promise((resolve, reject) => {
+        User.findOne({ username: username }).then(async (response) => {
+            if (!response) resolve({ message: 'Invalid username' });
+            else {
+                isPasswordTrue = await bcrypt.compare(password, response.password)
+                if (isPasswordTrue) {
+                    resolve({ status: true, message: "Authentication success", user: response });
+                }
+                else{
+                    resolve({ message: 'Invalid password' });
+                }
+            }
+        })
+    })
+} 

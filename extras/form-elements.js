@@ -25,7 +25,7 @@ module.exports = {
         {
             input: "input",
             title: "Password",
-            name: "Password",
+            name: "password",
             id: "password",
             type: "password",
             class: "input-text"

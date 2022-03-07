@@ -3,10 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+// var usersRouter = require('./routes/users');
+// const adminRouter = require('./routes/admin');
 const { createConnection } = require('./configurations/mongodb-connection');
+const { TOKEN_SECRET } = require('./configurations/constants');
 
 var app = express();
 
@@ -19,9 +22,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(session({ secret: TOKEN_SECRET, resave: true, saveUninitialized: true }))
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/home', require('./routes/home'));
+// app.use('/users', usersRouter);
+// app.use('/admin', adminRouter);
 
 createConnection().then((response) => {
   console.log(response);

@@ -8,6 +8,7 @@ const userSchema = new Schema({
     qualification: String,
     city: String,
     phoneNumber: String,
+    usertype: String,
 
 })
 
