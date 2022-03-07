@@ -10,3 +10,5 @@ const userSchema = new Schema({
     phoneNumber: String,
 
 })
+
+module.exports = model('User', userSchema);

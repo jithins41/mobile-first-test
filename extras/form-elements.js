@@ -15,6 +15,7 @@ module.exports = {
     },
     login: [
         {
+            input: "input",
             title: "Username",
             name: "username",
             id: "username",
@@ -22,15 +23,17 @@ module.exports = {
             class: "input-text"
         },
         {
+            input: "input",
             title: "Password",
             name: "Password",
-            id: "Password",
-            type: "Password",
+            id: "password",
+            type: "password",
             class: "input-text"
         }
     ],
     signup: [
         {
+            input: "input",
             title: "Username",
             name: "username",
             id: "username",
@@ -38,6 +41,7 @@ module.exports = {
             class: "input-text"
         },
         {
+            input: "input",
             title: "Name",
             name: "name",
             id: "name",
@@ -45,6 +49,7 @@ module.exports = {
             class: "input-text"
         },
         {
+            input: "input",
             title: "Qualifications",
             name: "qualifications",
             id: "qualifications",
@@ -52,6 +57,7 @@ module.exports = {
             class: "input-text"
         },
         {
+            input: "input",
             title: "City",
             name: "city",
             id: "city",
@@ -59,11 +65,28 @@ module.exports = {
             class: "input-text"
         },
         {
+            input: "input",
             title: "Phone",
             name: "phone",
             id: "phone",
             type: "number",
             class: "input-text"
         },
+        {
+            input: "select",
+            title: "Usertype",
+            name: "usertype",
+            id: "usertype",
+            options: ["Admin", "Guest"],
+            class: "input-text"
+        },
+        {
+            input: "input",
+            title: "Password",
+            name: "password",
+            id: "password",
+            type: "password",
+            class: "input-text"
+        }
     ]
 }
