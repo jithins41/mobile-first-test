@@ -1,0 +1,41 @@
+<% include header %>
+<section>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-30">
+        <div class="card">
+          <h2 style="margin-bottom: 1rem;"><%= title %></h2>
+          <form action="<%= action %>" onsubmit="formLoginSubmit(event)" method="post">
+            <% formElements.forEach(element => { %>
+
+            <% if (element.input=='input') { %>
+            <label for="<%= element.id %>"><%= element.title %></label>
+            <input required type="<%= element.type %>" class="<%= element.class %>" name="<%= element.name %>" id="<%= element.id %>">
+
+            <% } else if (element.input=='select') { %>
+            <label for="<%= element.id %>"><%= element.title %></label>
+            <select req class="<%= element.class %>" name="<%= element.name %>" id="<%= element.id %>">
+              <option value="">Select</option>
+              <% element.options.forEach(opt => { %>
+              <option value="<%= opt %>"><%= opt %></option>
+              <% }) %>
+
+            </select>
+
+            <% } %>
+            <% }) %>
+            <button type="<%= button.type %>" class="<%= button.class %>"><%= button.title %></button>
+          </form>
+          <a class="mt-3" href="<%= button.path %>"><%= button.botText %> </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+
+
+<% include footer %>

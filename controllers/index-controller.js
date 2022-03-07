@@ -53,5 +53,5 @@ module.exports.processLogin = (req, res, next) => {
 module.exports.processLogOut = (req, res, next) => {
     req.session.destroy();
     const token = jwt.sign('', TOKEN_SECRET);
-    res.json({ message: 'Logout Success' });
+    res.redirect('/login')
 }

@@ -1,10 +1,12 @@
 const Promise = require('promise');
 const User = require('../models/user-model');
 const bcrypt = require('bcryptjs');
+const sharp = require('sharp');
+const fs = require('fs');
 
 module.exports.findUserIdDuplication = function (userId) {
     return new Promise((resolve, reject) => {
-        User.findOne({username:userId}).then((response) => {
+        User.findOne({ username: userId }).then((response) => {
             if (response) {
                 resolve(true);
             }
@@ -35,10 +37,27 @@ module.exports.doLogin = function (username, password) {
                 if (isPasswordTrue) {
                     resolve({ status: true, message: "Authentication success", user: response });
                 }
-                else{
+                else {
                     resolve({ message: 'Invalid password' });
                 }
             }
         })
     })
-} 
+}
+
+module.exports.isDirExist = (dirname) => {
+    return new Promise((resolve) => {
+        fs.access(dirname, (error) => {
+            if (error) {
+                fs.mkdirSync(dirname, { recursive: true });
+            }
+            resolve();
+        })
+    })
+}
+module.exports.moveFile = (file, dir) => {
+    return new Promise(async (resolve, reject) => {
+        await sharp(file.data).toFile(dir + file.name);
+        resolve();
+    })
+}

@@ -7,8 +7,8 @@ const IndexController = require('../controllers/index-controller');
 //   res.render('index', { title: 'Express' });
 // });
 
-// router.get('/sign-up', IndexController.loadSignupPage);
-// router.get('/login', IndexController.loadLoginPage);
+router.get('/sign-up', IndexController.loadSignupPage);
+router.get('/login', IndexController.loadLoginPage);
 
 router.post('/sign-up', IndexController.processSignup);
 router.post('/login', IndexController.processLogin);

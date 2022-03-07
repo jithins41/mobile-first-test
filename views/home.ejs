@@ -1,0 +1,48 @@
+<% include header %>
+
+<a href="/logout">Logout</a>
+<div class="container">
+  <div class="row">
+    <div class="col-30">
+      <div class="card">
+        <label for="name">Name</label>
+        <input type="text" class="input-text" value="<%= user.name %> " id="name" disabled>
+        <label for="username">Username</label>
+        <input type="text" class="input-text" value="<%= user.username %> " id="username" disabled>
+        <label for="city">City</label>
+        <input type="text" class="input-text" value="<%= user.city %> " id="city" disabled>
+        <label for="phone">Phone</label>
+        <input type="text" class="input-text" value="<%= user.phone %> " id="phone" disabled>
+      </div>
+    </div>
+  </div>
+</div>
+<section>
+  <% if (user.usertype=='Admin') { %>
+
+  <div class="container">
+    <div class="card">
+      <form action="/admin/upload-photo" method="post" enctype="multipart/form-data">
+        <label for="picture">Photo</label>
+        <input required accept="Image/*" type="file" name="photo" id="picture" class="input-text">
+        <button class="button-normal">Upload</button>
+      </form>
+    </div>
+  </div>
+
+  <% } else { %>
+  <div class="row">
+
+    <% files.forEach(element => { %>
+    <div class="col-30">
+      <img style="max-width: 100%;" src="/images/<%= element %>" alt="">
+    </div>
+    <% }) %>
+
+
+  </div>
+
+
+  <% } %>
+</section>
+<% include footer %>
