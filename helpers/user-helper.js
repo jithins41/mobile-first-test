@@ -61,3 +61,13 @@ module.exports.moveFile = (file, dir) => {
         resolve();
     })
 }
+
+module.exports.updateUserType = (username, usertype) => {
+    return new Promise((resolve, reject) => {
+        User.findOneAndUpdate({ username: username }, { $set: { usertype: usertype } }).then(() => {
+            resolve({ status: true, message: "Usertype updated succesfully" });
+        }).catch((err) => {
+            resolve(err);
+        })
+    })
+}

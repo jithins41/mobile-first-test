@@ -4,13 +4,13 @@ const fs = require('fs');
 module.exports.verifyLogin = (req, res, next) => {
     let auth = req.session.token
     if (auth == undefined) {
-        res.redirect('/login')
+        res.status(401).json({ message: "Authentication failed" })
     }
     else {
 
         jwt.verify(auth, TOKEN_SECRET, (error) => {
             if (error) {
-                res.redirect('/login')
+                res.status(500).json({ message: "Authentication failed" })
             }
             else {
 
@@ -31,6 +31,7 @@ module.exports.loadUserHome = (req, res, next) => {
     }
     catch {
     }
-    res.render('home', { user: req.session.homeSession, files });
+   
+    res.status(200).json({ user: req.session.homeSession, files });
 }
 

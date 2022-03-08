@@ -1,5 +1,5 @@
 const { login, signup, button_login, button_signup } = require('../extras/form-elements');
-const { doSignup, findUserIdDuplication, doLogin } = require('../helpers/user-helper');
+const { doSignup, findUserIdDuplication, doLogin, updateUserType } = require('../helpers/user-helper');
 const jwt = require('jsonwebtoken');
 const { TOKEN_SECRET } = require('../configurations/constants');
 const { token } = require('morgan');
@@ -54,4 +54,11 @@ module.exports.processLogOut = (req, res, next) => {
     req.session.destroy();
     const token = jwt.sign('', TOKEN_SECRET);
     res.redirect('/login')
+}
+
+module.exports.processUpdateUsertype = (req, res, next) => {
+    let { username, usertype } = req.body
+    updateUserType(username, usertype).then((response) => {
+        res.json(response);
+    })
 }

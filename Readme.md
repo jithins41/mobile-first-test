@@ -52,8 +52,18 @@ A JWT token will generate when enter correct username and password. The token st
 then moveto home page.
 uses the same token to authenticate  GET : http://localhost:3000/home API
 
-Question 1 commit id : 78ea71080c163eacc4f81b6c77711a0585c5ac7d
+commit id : 78ea71080c163eacc4f81b6c77711a0585c5ac7d
 
+To update usert type 
+http://localhost:3000/update-usertype
+{
+    username:'1',
+    usertype:'Admin'
+}
+{
+    username:'2',
+    usertype:'Guest'
+}
 
 Question 2
 

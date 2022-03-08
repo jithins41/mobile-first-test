@@ -4,13 +4,13 @@ const { moveFile, isDirExist } = require('../helpers/user-helper');
 module.exports.verifyLogin = (req, res, next) => {
     let auth = req.session.token
     if (auth == undefined) {
-        res.redirect('/login')
+        res.status(401).json({ message: "Authentication failed" })
     }
     else {
 
         jwt.verify(auth, TOKEN_SECRET, (error) => {
             if (error) {
-                res.redirect('/login')
+                res.status(500).json({ message: "Authentication failed" })
             }
             else {
 
@@ -23,7 +23,7 @@ module.exports.verifyLogin = (req, res, next) => {
 
 
 module.exports.loadAdminHome = (req, res, next) => {
-    res.render('home', { user: req.session.homeSession });
+    res.status(200).json({ user: req.session.homeSession });
 }
 
 module.exports.processUploadPhoto = (req, res, next) => {
@@ -33,6 +33,6 @@ module.exports.processUploadPhoto = (req, res, next) => {
         return moveFile(file, dirName)
     })
         .then(() => {
-            res.redirect('/admin');
+            res.status(200).json({ status: true, message: "Image uploaded succesfully" });
         })
 }
