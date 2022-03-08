@@ -79,6 +79,8 @@ to upload photos
 
 POST http://localhost:3000/admin/upload-photo
 
+file name paramenter is photo
+
 
 To view uploaded photos by user
 

@@ -27,12 +27,17 @@ module.exports.loadAdminHome = (req, res, next) => {
 }
 
 module.exports.processUploadPhoto = (req, res, next) => {
-    let file = req.files.photo;
+    let file = req.files?.photo;
     let dirName = './public/images/';
-    isDirExist(dirName).then(() => {
-        return moveFile(file, dirName)
-    })
-        .then(() => {
-            res.status(200).json({ status: true, message: "Image uploaded succesfully" });
+    if (file) {
+        isDirExist(dirName).then(() => {
+            return moveFile(file, dirName)
         })
+            .then(() => {
+                res.status(200).json({ status: true, message: "Image uploaded succesfully" });
+            })
+    }
+    else{
+        res.status(500).json({message:'Unable to upload files'})
+    }
 }
