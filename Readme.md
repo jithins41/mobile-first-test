@@ -75,6 +75,16 @@ Created 2 routes
 Admin has facility to upload photos,
 User has facility to view uploaded photo we get the name of photos
 
+to upload photos
+
+POST http://localhost:3000/admin/upload-photo
+
+
+To view uploaded photos by user
+
+GET http://localhost:3000/user
+
+
 
 
 
