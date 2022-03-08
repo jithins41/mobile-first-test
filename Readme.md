@@ -16,7 +16,31 @@ These two APIs are in POST method and one route in GET method.
 
 POST : http://localhost:3000/sign-up
 
+Sample document 1
+{
+    username:'1',
+    name:'Jithin',
+    city:'Adoor',
+    phone:'9656449622',
+    password:'123'
+}
+
+Sample document 2
+{
+    username:'2',
+    name:'Hari',
+    city:'Kollam',
+    phone:'9565654778',
+    password:'123'
+}
+
+
 POST : http://localhost:3000/login
+
+{
+    username:'1',
+    password:'123'
+}
 
 GET : http://localhost:3000/logout
 
