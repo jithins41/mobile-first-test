@@ -56,6 +56,8 @@ commit id : 78ea71080c163eacc4f81b6c77711a0585c5ac7d
 
 To update usert type 
 http://localhost:3000/update-usertype
+
+
 {
     username:'1',
     usertype:'Admin'
@@ -65,18 +67,14 @@ http://localhost:3000/update-usertype
     usertype:'Guest'
 }
 
-Question 2
 
 Created 2 routes
 1. Admin 
 2. User
 
 Admin has facility to upload photos,
-User has facility to view uploaded photo
+User has facility to view uploaded photo we get the name of photos
 
-Front end created with EJS
 
-use http://localhost:3000/ to start the application
 
-Question 2 commit id : 0fb4fbdb997fbbf0b56b4cde0766185a3fed4a71
 
